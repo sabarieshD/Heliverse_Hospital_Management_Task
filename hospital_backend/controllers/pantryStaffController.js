@@ -1,10 +1,8 @@
 const pool = require('../config/db');
 
-// Create a new pantry staff member
 exports.createPantryStaff = async (req, res) => {
   const { name, contact_info, location, assigned_tasks, status, special_instruction } = req.body;
   
-  // Ensure assigned_tasks is an array. If it's a string, split it into an array.
   const assignedTasksArray = Array.isArray(assigned_tasks) ? assigned_tasks : assigned_tasks.split(',').map(task => task.trim());
 
   try {
@@ -19,7 +17,6 @@ exports.createPantryStaff = async (req, res) => {
   }
 };
 
-// Get all pantry staff members
 exports.getAllPantryStaff = async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM pantry_staff');
@@ -30,12 +27,10 @@ exports.getAllPantryStaff = async (req, res) => {
   }
 };
 
-// Update pantry staff member by ID
 exports.updatePantryStaff = async (req, res) => {
   const { id } = req.params;
   const { name, contact_info, location, assigned_tasks, status, special_instruction } = req.body;
   
-  // Ensure assigned_tasks is an array. If it's a string, split it into an array.
   const assignedTasksArray = Array.isArray(assigned_tasks) ? assigned_tasks : assigned_tasks.split(',').map(task => task.trim());
 
   try {

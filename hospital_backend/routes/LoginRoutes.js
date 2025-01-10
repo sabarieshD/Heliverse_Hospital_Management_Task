@@ -1,7 +1,6 @@
-// routes/loginRoutes.js
 const express = require('express');
 const router = express.Router();
-const loginController = require('../controllers/LoginController'); // Import the loginController
+const loginController = require('../controllers/LoginController');
 
 // Authenticate user
 router.post('/authenticate', loginController.authenticateUser);

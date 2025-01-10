@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const deliveryAgentController = require('../controllers/DeliveryAgentController');  // Import delivery agent controller
+const deliveryAgentController = require('../controllers/DeliveryAgentController'); 
 
 // Create a new delivery agent
-router.post('/delivery-agent', deliveryAgentController.createDeliveryAgent);
+router.post('/', deliveryAgentController.createDeliveryAgent);
 
 // Get all delivery agents
-router.get('/delivery-agent', deliveryAgentController.getAllDeliveryAgents);
+router.get('/', deliveryAgentController.getAllDeliveryAgents);
 
 // Update delivery agent by ID
-router.put('/delivery-agent/:id', deliveryAgentController.updateDeliveryAgent);
+router.put('/:id', deliveryAgentController.updateDeliveryAgent);
 
 // Delete delivery agent by ID
-router.delete('/delivery-agent/:id', deliveryAgentController.deleteDeliveryAgent);
+router.delete('/:id', deliveryAgentController.deleteDeliveryAgent);
 
-router.post('/delivery-agent-specific', deliveryAgentController.getDeliveryAgentByName);
+router.post('/specific', deliveryAgentController.getDeliveryAgentByName);
 
-router.put('/delivery-agent/status/:id', deliveryAgentController.updateDeliveryAgentStatus);
+router.put('/status/:id', deliveryAgentController.updateDeliveryAgentStatus);
 
 router.get('/orders/last5days', deliveryAgentController.getOrdersDeliveredLast5Days);
 

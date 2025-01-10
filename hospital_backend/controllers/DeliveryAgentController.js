@@ -1,10 +1,8 @@
 const pool = require('../config/db');
 
-// Create a new delivery agent
 exports.createDeliveryAgent = async (req, res) => {
   const { name, contact_info, status, assigned_meals } = req.body;
 
-  // Ensure assigned_meals is an array. If it's a string, split it into an array.
   const assignedMealsArray = Array.isArray(assigned_meals) ? assigned_meals : assigned_meals.split(',').map(meal => meal.trim());
 
   try {
@@ -117,10 +115,8 @@ exports.deleteDeliveryAgent = async (req, res) => {
 };
 
 
-// Get the number of orders delivered in the last 5 days
 exports.getOrdersDeliveredLast5Days = async (req, res) => {
   try {
-    // SQL query to count the number of orders delivered in the last 5 days
     const result = await pool.query(`
       SELECT COUNT(*) AS orders_delivered, DATE(updated_at) AS date
       FROM Delivery_Agent
@@ -131,7 +127,6 @@ exports.getOrdersDeliveredLast5Days = async (req, res) => {
 
     `);
 
-    // Send the result as a JSON response
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching order counts:', error);

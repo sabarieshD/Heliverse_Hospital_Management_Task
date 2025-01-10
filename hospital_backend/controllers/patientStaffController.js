@@ -1,6 +1,5 @@
-const pool = require('../config/db');  // Import the database connection
+const pool = require('../config/db');  
 
-// Create a new patient (POST)
 exports.createPatient = async (req, res) => {
   const {
     name,
@@ -28,7 +27,6 @@ exports.createPatient = async (req, res) => {
   }
 };
 
-// Fetch all patients (GET)
 exports.getAllPatients = async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM patient');
